@@ -2,15 +2,27 @@
 
 namespace AdapterPattern
 {
+    /// <summary>
+    /// This is the round hole we want to fit <see cref="SquarePeg"/> instances into.
+    /// </summary>
     public class RoundHole
     {
+        /// <summary>
+        /// The radius of the hole.
+        /// </summary>
         public double Radius { get; }
 
+        /// <summary>
+        /// Creates a round hole with the specified <paramref name="radius"/>.
+        /// </summary>
         public RoundHole(double radius)
         {
             this.Radius = radius;
         }
 
+        /// <summary>
+        /// Inserts any <see cref="IRoundPeg"/> implementation into the hole.
+        /// </summary>
         public void Insert(IRoundPeg peg)
         {
             if (peg.Radius > this.Radius)
