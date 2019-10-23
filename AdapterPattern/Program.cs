@@ -1,21 +1,21 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdapterPattern
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        internal static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            var squarePeg = new SquarePeg(width: 5.0);
+            var roundPegAdapter = new RoundPegAdapter(squarePeg);
+            var actualRoundPeg = new ActualRoundPeg(radius: 2);
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            var roundHole = new RoundHole(roundPegAdapter.Radius);
+
+            roundHole.Insert(actualRoundPeg);
+            roundHole.Insert(roundPegAdapter);
+
+            Console.ReadLine();
         }
     }
 }
